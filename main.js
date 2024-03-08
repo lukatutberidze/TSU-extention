@@ -1,3 +1,51 @@
+const HTMLconst = `
+<div class="timetable">
+<div class="column">
+    <div class="day">ორშაბათი</div>
+    <div class="lectures"></div>
+</div>
+<div class="column">
+    <div class="day">სამშაბათი</div>
+    <div class="lectures"></div>
+</div>
+<div class="column">
+    <div class="day">ოთხშაბათი</div>
+    <div class="lectures"></div>
+</div>
+<div class="column">
+    <div class="day">ხუთშაბათი</div>
+    <div class="lectures"></div>
+</div>
+<div class="column">
+    <div class="day">პარასკევი</div>
+    <div class="lectures"></div>
+</div>
+<div class="column">
+    <div class="day no-border">შაბათი</div>
+    <div class="lectures"></div>
+</div>
+</div>
+`;
+
+`<div class="lecture">
+    <p>ლექცია 12 - 12:50</p>
+    <p>დისკრეტული სტრუქტურები</p>
+    <p>XI კორპუსი/1 სართული/107</p>
+    <p>პედაგოგ(ებ)ი: ყიფიანი არჩილ</p>
+</div>
+<div class="lecture">
+<p>ლექცია 12 - 12:50</p>
+<p>დისკრეტული სტრუქტურები</p>
+<p>XI კორპუსი/1 სართული/107</p>
+<p>პედაგოგ(ებ)ი: ყიფიანი არჩილ</p>
+</div>
+<div class="lecture">
+<p>ლექცია 12 - 12:50</p>
+<p>დისკრეტული სტრუქტურები</p>
+<p>XI კორპუსი/1 სართული/107</p>
+<p>პედაგოგ(ებ)ი: ყიფიანი არჩილ</p>
+</div>`;
+
 chrome.runtime.onMessage.addListener((obj, sender, sendResponse) => {
   const { message } = obj;
   if (message == "rerun") {
@@ -133,34 +181,20 @@ function render() {
 
   console.log(sortedlist);
 
-  let table2 = (document.getElementsByTagName(
-    "table"
-  )[0].parentNode.parentNode.innerHTML = `
-            <div class="timetable">
-                <div class="column">
-                    <div class="day">ორშაბათი</div>
-                    <div class="lectures"></div>
-                </div>
-                <div class="column">
-                    <div class="day">სამშაბათი</div>
-                    <div class="lectures"></div>
-                </div>
-                <div class="column">
-                    <div class="day">ოთხშაბათი</div>
-                    <div class="lectures"></div>
-                </div>
-                <div class="column">
-                    <div class="day">ხუთშაბათი</div>
-                    <div class="lectures"></div>
-                </div>
-                <div class="column">
-                    <div class="day">პარასკევი</div>
-                    <div class="lectures"></div>
-                </div>
-                <div class="column">
-                    <div class="day no-border">შაბათი</div>
-                    <div class="lectures"></div>
-                </div>
-                </div>
-                `);
+  document.getElementsByTagName("table")[0].parentNode.parentNode.innerHTML =
+    HTMLconst;
+
+  const lectures = document.getElementsByClassName("lectures");
+  for (let i = 0; i < lectures.length; i++) {
+    const currentDay = sortedlist[i];
+
+    for (let j = 0; j < currentDay.length; j++) {
+      const div = document.createElement("div");
+      div.classList.add("lecture");
+      const p = document.createElement("p");
+      p.innerText = currentDay[j][0];
+      div.appendChild(p);
+      lectures[i].appendChild(div);
+    }
+  }
 }
