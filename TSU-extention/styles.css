@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.timetable {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    border: 1px solid #00000059;
+}
+
+.column {
+    flex: 1;
+}
+
+.day {
+    padding: 10px;
+    background-color: #49505730;
+    border-right: 1px solid #00000059;
+}
+
+.lecture {
+    padding: 10px;
+    color: #084678;
+    background-color: #74c0fc;
+}
+
+.break {
+    padding: 10px;
+    background-color: #96f2d7;
+}
+
+.no-border {
+    border-right: none;
+}

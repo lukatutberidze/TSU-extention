@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "My Extension",
+  "version": "1.0",
+  "description": "A brief description of my extension",
+  "content_scripts":[
+    {
+      "matches" : ["https://uni.tsu.ge/schedule"],
+      "js" : ["main.js"],
+      "css":["styles.css"]
+    }
+  ]
+
+}
