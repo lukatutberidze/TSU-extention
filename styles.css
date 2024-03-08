@@ -6,7 +6,7 @@
 
 .timetable {
     width: 90%;
-    margin: auto;
+    margin: 30px auto;
     display: flex;
     border: 1px solid #00000059;
 }
@@ -21,10 +21,19 @@
     border-right: 1px solid #00000059;
 }
 
+.lectures {
+    border-right: 1px solid #00000059;
+}
+
 .lecture {
     padding: 10px;
     color: #084678;
     background-color: #74c0fc;
+    border-bottom: 1px solid #00000059;
+}
+
+.lecture p, .break p {
+    margin-bottom: 0;
 }
 
 .break {

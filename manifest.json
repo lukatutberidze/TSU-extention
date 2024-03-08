@@ -3,12 +3,15 @@
   "name": "My Extension",
   "version": "1.0",
   "description": "A brief description of my extension",
-  "content_scripts":[
+  "permissions": ["storage", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
     {
-      "matches" : ["https://uni.tsu.ge/schedule"],
-      "js" : ["main.js"],
-      "css":["styles.css"]
+      "matches": ["https://uni.tsu.ge/*"],
+      "js": ["main.js"],
+      "css": ["styles.css"]
     }
   ]
-
 }
